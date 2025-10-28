@@ -455,31 +455,111 @@ class _ServiceCardState extends State<ServiceCard> {
 }
 
 // ---------------- CONTACT ----------------
+
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme.bodyLarge;
+
     return Container(
+      width: double.infinity,
       color: Colors.blue.shade50,
-      padding: const EdgeInsets.all(50),
+      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 30),
       child: Column(
-        children: const [
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
           Text(
             'Contact Us',
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Colors.blue.shade900,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
-          SizedBox(height: 20),
-          Text('📍 Address: blue Area, Islambad'),
-          Text('📞 Phone: +92 333 5132538'),
-          Text('✉️ Email: noordiesel@gmail.com'),
-          SizedBox(height: 10),
-          Text('Working Hours: Mon - Sat, 9:00 AM - 6:00 PM'),
+          const SizedBox(height: 30),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 40,
+            runSpacing: 20,
+            children: [
+              _ContactItem(
+                icon: Icons.location_on,
+                title: 'Address',
+                detail: 'Blue Area, Islamabad',
+              ),
+              _ContactItem(
+                icon: Icons.phone,
+                title: 'Phone',
+                detail: '+92 333 5132538',
+              ),
+              _ContactItem(
+                icon: Icons.email,
+                title: 'Email',
+                detail: 'noordiesel@gmail.com',
+              ),
+              _ContactItem(
+                icon: Icons.access_time,
+                title: 'Working Hours',
+                detail: 'Mon - Sat, 9:00 AM - 6:00 PM',
+              ),
+            ],
+          ),
+          const SizedBox(height: 40),
+          ElevatedButton.icon(
+            onPressed: () {
+              // Add link to contact page or email
+            },
+            icon: const Icon(Icons.send),
+            label: const Text('Get in Touch'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue.shade700,
+              foregroundColor: Colors.white,
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
+
+class _ContactItem extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String detail;
+
+  const _ContactItem({
+    required this.icon,
+    required this.title,
+    required this.detail,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Icon(icon, color: Colors.blue.shade700, size: 30),
+        const SizedBox(height: 8),
+        Text(
+          title,
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, color: Colors.black87),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          detail,
+          style: TextStyle(color: Colors.grey.shade700),
+        ),
+      ],
+    );
+  }
+}
+
 
 // ---------------- FOOTER ----------------
 class FooterSection extends StatelessWidget {
