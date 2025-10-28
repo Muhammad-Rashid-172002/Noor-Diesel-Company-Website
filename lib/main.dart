@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const GeneratorBusinessApp());
@@ -63,10 +64,7 @@ class HeaderSection extends StatelessWidget {
           ),
           Text(
             'Reliable Power Solutions',
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 16,
-            ),
+            style: TextStyle(color: Colors.white70, fontSize: 16),
           ),
         ],
       ),
@@ -75,72 +73,203 @@ class HeaderSection extends StatelessWidget {
 }
 
 // ---------------- HERO ----------------
+
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 40),
+      height: 600,
+      width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(
-            'https://images.unsplash.com/photo-1603791440384-56cd371ee9a7', // Replace with generator image
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu-pPcjoDF9lBxyNyYOrZY37zQvMXJ1zwI9Q&s', // Generator image
           ),
           fit: BoxFit.cover,
-          opacity: 0.3,
         ),
-        color: Colors.black87,
       ),
-      child: Column(
-        children: const [
-          Text(
-            'Powering Your World with Reliable Generators',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 36,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.black.withOpacity(0.7),
+              Colors.black.withOpacity(0.5),
+              Colors.transparent,
+            ],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'NOOR DIESEL COMPANY',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 48,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 2,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  'Powering Your World with Reliable Diesel Generators',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 22,
+                    color: Colors.white70,
+                    height: 1.5,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFF59E0B), // Amber
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 16,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  onPressed: () {
+                    // Add navigation to contact page
+                  },
+                  child: Text(
+                    'Contact Us',
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          SizedBox(height: 20),
-          Text(
-            'Sales • Installation • Maintenance • Rentals',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white70,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 }
 
 // ---------------- ABOUT ----------------
+
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(50.0),
+    return Container(
+      color: Colors.grey.shade100,
+      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 60),
       child: Column(
-        children: const [
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
           Text(
-            'About Us',
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            'About Noor Diesel',
+            style: GoogleFonts.montserrat(
+              fontSize: 36,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF1E3A8A), // Navy blue
+              letterSpacing: 1.2,
+            ),
           ),
-          SizedBox(height: 20),
-          Text(
-            'We specialize in high-quality electric generators for homes, offices, and industries. '
-            'With years of experience, we provide installation, maintenance, and 24/7 support for all generator types.',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18, height: 1.5),
+          const SizedBox(height: 20),
+          Container(
+            width: 80,
+            height: 4,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF59E0B), // Amber line
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(height: 40),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return constraints.maxWidth > 800
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu-pPcjoDF9lBxyNyYOrZY37zQvMXJ1zwI9Q&s',
+                              height: 300,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 40),
+                        Expanded(flex: 1, child: _aboutText()),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu-pPcjoDF9lBxyNyYOrZY37zQvMXJ1zwI9Q&s',
+                            height: 250,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+                        _aboutText(),
+                      ],
+                    );
+            },
           ),
         ],
       ),
+    );
+  }
+
+  Widget _aboutText() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Delivering Trusted Power Solutions Since 2010',
+          style: GoogleFonts.poppins(
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Noor Diesel is a leading provider of premium diesel generators and energy solutions. '
+          'With over a decade of experience, we specialize in the sales, installation, and maintenance of reliable power systems for homes, businesses, and industries. '
+          'Our mission is to keep your world running with efficiency, reliability, and exceptional service.',
+          textAlign: TextAlign.justify,
+          style: GoogleFonts.poppins(
+            fontSize: 18,
+            height: 1.7,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 20),
+        Text(
+          '💡 We believe in powering progress through quality, innovation, and customer satisfaction.',
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            fontStyle: FontStyle.italic,
+            color: Colors.grey[700],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -193,7 +322,7 @@ class ServiceCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
-          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(2, 2))
+          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(2, 2)),
         ],
       ),
       child: Column(
