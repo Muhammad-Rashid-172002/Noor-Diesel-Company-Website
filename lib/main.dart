@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uncle_website/screens/new_cards/GeneratorSalesPage.dart';
+import 'package:uncle_website/screens/new_cards/installation_page.dart';
+import 'package:uncle_website/screens/new_cards/maintenance_page.dart';
+import 'package:uncle_website/screens/new_cards/rental_page.dart';
 
 void main() {
   runApp(const GeneratorBusinessApp());
@@ -43,28 +47,45 @@ class HomePage extends StatelessWidget {
 }
 
 // ---------------- HEADER ----------------
+
 class HeaderSection extends StatelessWidget {
   const HeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 60),
-      color: Colors.blueAccent,
-      child: const Row(
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+      color: const Color(0xFF1E3A8A), // deep professional blue
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Noor diesel Electric Generators',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+          // 🔹 Left side: Logo + Company Name
+          Row(
+            children: [
+              // Company logo
+              Image.asset('assets/noor_logo.png', height: 55),
+              const SizedBox(width: 15),
+              const Text(
+                'Noor Diesel Engineering Company Pakistan',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.1,
+                ),
+              ),
+            ],
           ),
-          Text(
-            'Reliable Power Solutions',
-            style: TextStyle(color: Colors.white70, fontSize: 16),
+
+          // 🔹 Right side: Tagline
+          const Text(
+            'Reliable Power Solutions ⚡',
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.8,
+            ),
           ),
         ],
       ),
@@ -109,7 +130,7 @@ class HeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'NOOR DIESEL COMPANY',
+                  'NOOR DIESEL ENGINEERING COMPANY PAKISTAN',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(
                     fontSize: 48,
@@ -275,6 +296,7 @@ class AboutSection extends StatelessWidget {
 }
 
 // ---------------- SERVICES ----------------
+
 class ServicesSection extends StatelessWidget {
   const ServicesSection({super.key});
 
@@ -282,23 +304,78 @@ class ServicesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey.shade100,
-      padding: const EdgeInsets.all(40),
+      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 40),
       child: Column(
         children: [
-          const Text(
+          Text(
             'Our Services',
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+            style: GoogleFonts.montserrat(
+              fontSize: 36,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF1E3A8A),
+            ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 16),
+          Container(
+            width: 80,
+            height: 4,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF59E0B),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(height: 50),
           Wrap(
             alignment: WrapAlignment.center,
-            spacing: 20,
-            runSpacing: 20,
-            children: const [
-              ServiceCard(title: 'Generator Sales', icon: Icons.bolt),
-              ServiceCard(title: 'Installation', icon: Icons.build),
-              ServiceCard(title: 'Repair & Maintenance', icon: Icons.settings),
-              ServiceCard(title: 'Rental Services', icon: Icons.local_shipping),
+            spacing: 30,
+            runSpacing: 30,
+            children: [
+              ServiceCard(
+                title: 'Generator Sales',
+                icon: Icons.bolt,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GeneratorSalesPage(),
+                    ),
+                  );
+                },
+              ),
+              ServiceCard(
+                title: 'Installation',
+                icon: Icons.build,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const InstallationPage(),
+                    ),
+                  );
+                },
+              ),
+              ServiceCard(
+                title: 'Repair & Maintenance',
+                icon: Icons.settings,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MaintenancePage(),
+                    ),
+                  );
+                },
+              ),
+              ServiceCard(
+                title: 'Rental Services',
+                icon: Icons.local_shipping,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RentalPage()),
+                  );
+                },
+              ),
             ],
           ),
         ],
@@ -307,34 +384,71 @@ class ServicesSection extends StatelessWidget {
   }
 }
 
-class ServiceCard extends StatelessWidget {
+class ServiceCard extends StatefulWidget {
   final String title;
   final IconData icon;
+  final VoidCallback onTap;
 
-  const ServiceCard({super.key, required this.title, required this.icon});
+  const ServiceCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  State<ServiceCard> createState() => _ServiceCardState();
+}
+
+class _ServiceCardState extends State<ServiceCard> {
+  bool _isHovering = false;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(2, 2)),
-        ],
-      ),
-      child: Column(
-        children: [
-          Icon(icon, size: 40, color: Colors.blueAccent),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovering = true),
+      onExit: (_) => setState(() => _isHovering = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 250),
+          width: 260,
+          height: 220,
+          padding: const EdgeInsets.all(25),
+          decoration: BoxDecoration(
+            color: _isHovering ? const Color(0xFF1E3A8A) : Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: _isHovering ? Colors.black26 : Colors.black12,
+                blurRadius: _isHovering ? 12 : 6,
+                offset: const Offset(0, 6),
+              ),
+            ],
           ),
-        ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                widget.icon,
+                size: 50,
+                color: _isHovering
+                    ? const Color(0xFFF59E0B)
+                    : const Color(0xFF1E3A8A),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                widget.title,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: _isHovering ? Colors.white : Colors.black87,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -378,7 +492,7 @@ class FooterSection extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: const Center(
         child: Text(
-          '©️ 2025 Noor Diesel Electric Generators | All Rights Reserved',
+          '©️ 2025 Noor Diesel Engineering Company Pakistan | All Rights Reserved',
           style: TextStyle(color: Colors.white70, fontSize: 14),
         ),
       ),
