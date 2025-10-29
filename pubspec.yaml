@@ -38,6 +38,8 @@ dependencies:
   lucide_icons_flutter: ^3.1.5
   url_launcher: ^6.3.0
   animate_do: ^2.1.0
+  font_awesome_flutter: ^10.4.0
+  carousel_slider: ^5.1.1
 
 dev_dependencies:
   flutter_test:
@@ -63,7 +65,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - assets/noor_logo.png
+      - assets/noor_logo-removebg-preview.png
+      - assets/sells/2be8b3a4b95ac8f35fc5a9782747a455.jpeg
+      - assets/sells/50-kVA-Price-in-Pakistan-Silent-Generator-for-Home-Use.jpeg
+      - assets/sells/Baudouin-generators-600x564.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
