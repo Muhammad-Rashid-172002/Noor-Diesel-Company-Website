@@ -24,26 +24,82 @@ class GeneratorBusinessApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+
+  // Each section gets a GlobalKey
+  final homeKey = GlobalKey();
+  final aboutKey = GlobalKey();
+  final servicesKey = GlobalKey();
+  final projectsKey = GlobalKey();
+  final contactKey = GlobalKey();
+
+  // Smooth scroll helper
+  void _scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(milliseconds: 700),
+        curve: Curves.easeInOutCubic,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
-            HeaderSection(),
-            HeroSection(),
-            AboutSection(),
-            ServicesSection(),
-            ProjectsSection(),
-            ContactSection(),
-            FooterSection(),
-          ],
-        ),
+      body: Column(
+        children: [
+          // Header with onNavItemTap callback
+          HeaderSection(
+            onNavItemTap: (section) {
+              switch (section) {
+                case 'home':
+                  _scrollToSection(homeKey);
+                  break;
+                case 'about':
+                  _scrollToSection(aboutKey);
+                  break;
+                case 'services':
+                  _scrollToSection(servicesKey);
+                  break;
+                case 'projects':
+                  _scrollToSection(projectsKey);
+                  break;
+                case 'contact':
+                  _scrollToSection(contactKey);
+                  break;
+              }
+            },
+          ),
+
+          // Scrollable body content
+          Expanded(
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(key: homeKey, child: const HeroSection()),
+                  Container(key: aboutKey, child: const AboutSection()),
+                  Container(key: servicesKey, child: const ServicesSection()),
+                  Container(key: projectsKey, child: const ProjectsSection()),
+                  Container(key: contactKey, child: const ContactSection()),
+                  const FooterSection(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -19,7 +19,7 @@ class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
     },
     {
       'path':
-          'assets/sells/50-kVA-Price-in-Pakistan-Silent-Generator-for-Home-Use.jpeg',
+          'assets/sells/CAT-DE50GC-50-kVA-Stand-by-Generator-Set-DPX-18205-Netherlands_3897_2790429851311.jpg',
       'desc':
           '50 kVA Silent Generator – Perfect for homes, offices, and small businesses. Delivers quiet and efficient operation.',
     },
@@ -296,7 +296,12 @@ class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(18),
-            child: Image.asset(path, height: 320, fit: BoxFit.cover),
+            child: Image.asset(
+              path,
+              height: 530, // ⬅️ Increased from 320 to 480 for larger view
+              width: double.infinity, // ⬅️ Make it stretch nicely
+              fit: BoxFit.cover, // ⬅️ Ensures full image fills the space
+            ),
           ),
         ),
       ),
