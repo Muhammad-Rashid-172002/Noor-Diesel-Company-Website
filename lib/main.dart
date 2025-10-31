@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(key: homeKey, child: const HeroSection()),
                   Container(key: aboutKey, child: const AboutSection()),
-                  Container(key: servicesKey, child: const ServicesSection()),
+                  Container(key: servicesKey, child: const ProductsSection()),
                   Container(key: projectsKey, child: const ProjectsSection()),
                   Container(key: contactKey, child: const ContactSection()),
                   const FooterSection(),
