@@ -35,7 +35,13 @@ class ProjectsSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      color: Colors.grey.shade100,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFFF8FAFC), Color(0xFFE0F2FE)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,13 +57,13 @@ class ProjectsSection extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Container(
-            width: 90,
+            width: 100,
             height: 4,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFF2563EB), Color(0xFF60A5FA)],
+                colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
               ),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(2),
             ),
           ),
           const SizedBox(height: 50),

@@ -40,6 +40,7 @@ class _HeaderSectionState extends State<HeaderSection> {
                       children: [
                         Image.asset(
                           'assets/noor_logo-removebg-preview.png',
+                          color: Colors.white,
                           height: 45,
                         ),
                         const SizedBox(width: 10),

@@ -46,20 +46,30 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey.shade50,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFFF8FAFC), Color(0xFFE0F2FE)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 40),
       child: Column(
         children: [
-          Text(
-            'About Noor Diesel Engineering Company',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(
-              fontSize: 34,
-              fontWeight: FontWeight.bold,
-              foreground: Paint()
-                ..shader = const LinearGradient(
-                  colors: [Color(0xFF1E3A8A), Color(0xFF2563EB)],
-                ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+          ShaderMask(
+            shaderCallback: (bounds) => const LinearGradient(
+              colors: [Color(0xFF2563EB), Color(0xFF0EA5E9)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ).createShader(bounds),
+            child: Text(
+              'About Noor Diesel Engineering Company',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.montserrat(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // masked by shader
+              ),
             ),
           ),
           const SizedBox(height: 12),
@@ -93,18 +103,32 @@ class AboutSection extends StatelessWidget {
     );
   }
 
+  // ✅ Left image with soft shadow & rounded corners
   Widget _aboutImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.network(
-        'https://5.imimg.com/data5/SELLER/Default/2025/4/499912647/MU/HJ/IU/24822239/silent-genset-for-construction-sites-in-nepal.jpeg',
-        height: 500,
-        width: double.infinity,
-        fit: BoxFit.cover,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blueGrey.withOpacity(0.2),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Image.network(
+          'https://5.imimg.com/data5/SELLER/Default/2025/4/499912647/MU/HJ/IU/24822239/silent-genset-for-construction-sites-in-nepal.jpeg',
+          height: 500,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
 
+  // ✅ Right section with text, service icons, and contacts
   Widget _aboutContent() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,57 +138,41 @@ class AboutSection extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 17,
             height: 1.7,
-            color: Colors.black87,
+            color: Colors.grey.shade800,
           ),
         ),
         const SizedBox(height: 25),
         Text(
           'Our Services Include:',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 19,
             fontWeight: FontWeight.w600,
-            color: Colors.blue.shade900,
+            color: const Color(0xFF1E3A8A),
           ),
         ),
         const SizedBox(height: 18),
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
+          spacing: 14,
+          runSpacing: 12,
           children: services.map((service) {
-            return Container(
-              constraints: const BoxConstraints(maxWidth: 300),
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(service['icon'], color: Colors.blue.shade800, size: 20),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      service['title'],
-                      style: GoogleFonts.poppins(fontSize: 15, height: 1.5),
-                    ),
-                  ),
-                ],
-              ),
-            );
+            return _modernServiceCard(service['icon'], service['title']);
           }).toList(),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 40),
         Text(
           'Contact Addresses:',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 19,
             fontWeight: FontWeight.w600,
-            color: Colors.blue.shade900,
+            color: const Color(0xFF1E3A8A),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
         _contactCard(
           'Islamabad Office',
           'Suite #306 Ginza Centre, 3rd Floor, Jinnah Avenue, Blue Area Islamabad, Pakistan\nTel: +92-51-2804188\nFax: +92-51-2804188\nCell: +92-333-9091225\nEmail: noordiesel@gmail.com',
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 18),
         _contactCard(
           'Peshawar Office',
           'Meer Alam Market, Pabbi Nowshera, GT Road, Peshawar, Pakistan\nTel: +92-923-527585\nMob: +92-333-5132538\nCell: +92-315-5132538\nZahid Ali - Branch Manager',
@@ -173,14 +181,70 @@ class AboutSection extends StatelessWidget {
     );
   }
 
-  Widget _contactCard(String title, String detail) {
+  // ✅ Modern gradient badge + hover animation for services
+  Widget _modernServiceCard(IconData icon, String title) {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        padding: const EdgeInsets.all(18),
+        constraints: const BoxConstraints(maxWidth: 320),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
           color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 28,
+              width: 28,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [Color(0xFF2563EB), Color(0xFF0EA5E9)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: Icon(icon, color: Colors.white, size: 16),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                title,
+                style: GoogleFonts.poppins(
+                  fontSize: 15,
+                  height: 1.5,
+                  color: Colors.grey.shade800,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ✅ Contact cards with hover color accent
+  Widget _contactCard(String title, String detail) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) {},
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 350),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFFFFFFFF), Color(0xFFF8FAFC)],
+          ),
           borderRadius: BorderRadius.circular(16),
           boxShadow: const [
             BoxShadow(
@@ -198,11 +262,18 @@ class AboutSection extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
-                color: Colors.blue.shade900,
+                color: const Color(0xFF2563EB),
               ),
             ),
             const SizedBox(height: 8),
-            Text(detail, style: GoogleFonts.poppins(fontSize: 15, height: 1.6)),
+            Text(
+              detail,
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                height: 1.6,
+                color: Colors.grey.shade700,
+              ),
+            ),
           ],
         ),
       ),

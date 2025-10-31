@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:uncle_website/screens/new_cards/CablesPage.dart';
 import 'package:uncle_website/screens/new_cards/GeneratorSalesPage.dart';
 import 'package:uncle_website/screens/new_cards/batteries_page.dart';
 import 'package:uncle_website/screens/new_cards/installation_page.dart';
-import 'package:uncle_website/screens/new_cards/maintenance_page.dart';
 import 'package:uncle_website/screens/new_cards/parts_page.dart';
 import 'package:uncle_website/screens/new_cards/rental_page.dart';
 
@@ -19,7 +17,13 @@ class _ProductsSectionState extends State<ProductsSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey.shade50,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFFF8FAFC), Color(0xFFE0F2FE)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -67,10 +71,8 @@ class _ProductsSectionState extends State<ProductsSection> {
                     [
                           ProductCard(
                             title: 'Generator Sales',
-                            description:
-                                'High-quality diesel & petrol generators for industrial and home use.',
                             imageUrl:
-                                'https://images.unsplash.com/photo-1581091870627-3a07c8a5b8a0?w=600',
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRezfvYxmRrPSi0O-uOnztnNuyC870ougkRnQ&s',
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -80,11 +82,9 @@ class _ProductsSectionState extends State<ProductsSection> {
                             ),
                           ),
                           ProductCard(
-                            title: 'Generator Installation Kits',
-                            description:
-                                'Complete installation kits and professional setup for new generators.',
+                            title: 'Generator Installation',
                             imageUrl:
-                                'https://images.unsplash.com/photo-1581091870630-bc4a85a62f87?w=600',
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfwaux7JtTkmpAEhgn8OdyTap9eWvmvGKJXA&s',
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -93,24 +93,9 @@ class _ProductsSectionState extends State<ProductsSection> {
                             ),
                           ),
                           ProductCard(
-                            title: 'Repair & Maintenance Tools',
-                            description:
-                                'All essential tools and accessories for generator servicing.',
-                            imageUrl:
-                                'https://images.unsplash.com/photo-1581091012184-7a26b89f1b49?w=600',
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const MaintenancePage(),
-                              ),
-                            ),
-                          ),
-                          ProductCard(
                             title: 'Generator Rentals',
-                            description:
-                                'Affordable rental generators for events, industries & emergencies.',
                             imageUrl:
-                                'https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=600',
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGxN9h3oe206o2hVZoHi1XtsSja8hD46ag1g&s',
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -120,10 +105,8 @@ class _ProductsSectionState extends State<ProductsSection> {
                           ),
                           ProductCard(
                             title: 'Spare Parts',
-                            description:
-                                'Wide range of genuine generator parts and accessories available.',
                             imageUrl:
-                                'https://images.unsplash.com/photo-1602526216432-5f7e7d9c3d11?w=600',
+                                'https://scontent.fpew1-1.fna.fbcdn.net/v/t39.30808-6/485144816_1053323096836276_5407812930324111287_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NW7G4bRn5GAQ7kNvwEH9JbW&_nc_oc=AdmSEEBG5O4bwDreRJXMB2MuESE_DHxE5uITeyLNNrQll5eyJa0225WPUXQ3IRCZIsY&_nc_zt=23&_nc_ht=scontent.fpew1-1.fna&_nc_gid=aIc7K-IFgR0jJDHsz8zPLw&oh=00_AffqQQah_fXwvYYlVtarmbNzBCKcwhxt4FI9pWYYNsZOTQ&oe=690A27B2',
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -133,10 +116,8 @@ class _ProductsSectionState extends State<ProductsSection> {
                           ),
                           ProductCard(
                             title: 'Batteries',
-                            description:
-                                'Reliable batteries for standby power and generator startups.',
                             imageUrl:
-                                'https://images.unsplash.com/photo-1618661098250-4c8b5cdd7301?w=600',
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyo_din2WnuIBygIKeqX2yeflPSI5OyLOpg&s',
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -144,24 +125,11 @@ class _ProductsSectionState extends State<ProductsSection> {
                               ),
                             ),
                           ),
-                          ProductCard(
-                            title: 'Cables & Connectors',
-                            description:
-                                'Durable electrical cables and connectors for safe installation.',
-                            imageUrl:
-                                'https://images.unsplash.com/photo-1616627988556-f69c4b4e6b19?w=600',
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Cablespage(),
-                              ),
-                            ),
-                          ),
                         ]
                         .map(
                           (card) => SizedBox(
                             width: cardWidth,
-                            height: cardWidth, // make it square
+                            height: cardWidth * 0.85, // nice visual ratio
                             child: card,
                           ),
                         )
@@ -177,14 +145,12 @@ class _ProductsSectionState extends State<ProductsSection> {
 
 class ProductCard extends StatefulWidget {
   final String title;
-  final String description;
   final String imageUrl;
   final VoidCallback onTap;
 
   const ProductCard({
     super.key,
     required this.title,
-    required this.description,
     required this.imageUrl,
     required this.onTap,
   });
@@ -204,66 +170,69 @@ class _ProductCardState extends State<ProductCard> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 250),
+          duration: const Duration(milliseconds: 350),
           curve: Curves.easeInOut,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.15),
-                blurRadius: _hover ? 20 : 8,
-                offset: const Offset(0, 6),
+                color: Colors.black.withOpacity(_hover ? 0.25 : 0.1),
+                blurRadius: _hover ? 22 : 10,
+                offset: const Offset(0, 8),
               ),
             ],
           ),
-          child: AnimatedScale(
-            duration: const Duration(milliseconds: 250),
-            scale: _hover ? 0.97 : 1.0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(18),
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Image.network(widget.imageUrl, fit: BoxFit.cover),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 250),
-                    color: _hover
-                        ? Colors.lightBlueAccent.withOpacity(0.4)
-                        : Colors.black.withOpacity(0.4),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            widget.title,
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
-                            widget.description,
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.poppins(
-                              fontSize: 13,
-                              color: Colors.white70,
-                            ),
-                          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(18),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                // 🖼 Background Image
+                AnimatedScale(
+                  duration: const Duration(milliseconds: 350),
+                  scale: _hover ? 1.05 : 1.0,
+                  curve: Curves.easeInOut,
+                  child: Image.network(widget.imageUrl, fit: BoxFit.cover),
+                ),
+
+                // 🌈 Light gradient overlay (whole card)
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 350),
+                  opacity: _hover ? 0.5 : 0.0, // 👈 semi-transparent
+                  curve: Curves.easeInOut,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFFF59E0B), // amber
+                          Color(0xFFEF4444), // red
                         ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+
+                // 📝 Bottom text area
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    color: Colors.black.withOpacity(0.45),
+                    child: Text(
+                      widget.title,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
