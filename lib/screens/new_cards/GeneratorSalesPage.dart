@@ -11,6 +11,7 @@ class GeneratorSalesPage extends StatefulWidget {
 }
 
 class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
+  // ✅ WhatsApp
   Future<void> _openWhatsApp(String message) async {
     const phone = '+923335132538';
     final Uri url = Uri.parse(
@@ -21,239 +22,200 @@ class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
     }
   }
 
+  // ✅ Phone Call
+  Future<void> _makePhoneCall() async {
+    final Uri phoneUri = Uri.parse('tel:+923335132538');
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    }
+  }
+
+  // ✅ Email
+  Future<void> _sendEmail() async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: 'noordiesel@gmail.com.pk',
+      query: 'subject=Generator Sales Inquiry - Noor Diesel Engineering',
+    );
+    if (await canLaunchUrl(emailUri)) {
+      await launchUrl(emailUri);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isMobile = size.width < 800;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF1E3A8A),
-        elevation: 6,
-        centerTitle: true,
-        title: Text(
-          'Generator Sales',
-          style: GoogleFonts.montserrat(
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            fontSize: 22,
-          ),
-        ),
-      ),
+      backgroundColor: const Color(0xFF0A0F24),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FadeInDown(
-              duration: const Duration(milliseconds: 800),
-              child: Text(
-                'Premium Power Systems',
-                style: GoogleFonts.montserrat(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                  color: const Color(0xFF1E3A8A),
+            // ✅ Header
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                vertical: isMobile ? 20 : 25,
+                horizontal: isMobile ? 20 : 60,
+              ),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF0A3D62), Color(0xFF1B1F3B)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
-            ),
-            const SizedBox(height: 15),
-            FadeInUp(
-              duration: const Duration(milliseconds: 900),
-              child: Text(
-                'Noor Diesel Engineering provides high-quality CAT® diesel and gas generators — built for performance, efficiency, and long-term reliability across all industries.',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.grey.shade800,
-                  height: 1.7,
-                ),
-              ),
-            ),
-            const SizedBox(height: 50),
-
-            // 🔹 Generator 1
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: FadeInLeft(
-                    duration: const Duration(milliseconds: 800),
-                    child: _buildGeneratorImage(
-                      "assets/sells/Baudouin-generators-600x564.jpg",
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Noor Diesel Engineering Company",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: isMobile ? 18 : 22,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-                const SizedBox(width: 30),
-                Expanded(
-                  flex: 5,
-                  child: FadeInRight(
-                    duration: const Duration(milliseconds: 800),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Baudouin Diesel Generator",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF1E3A8A),
-                          ),
-                        ),
-                        const SizedBox(height: 14),
-                        Text(
-                          "Engineered in Europe, Baudouin generators offer unmatched efficiency and durability for continuous industrial use. Designed for reliability in all weather conditions.",
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            color: Colors.grey.shade800,
-                            height: 1.6,
-                          ),
-                        ),
-                        const SizedBox(height: 18),
-                        ElevatedButton.icon(
-                          onPressed: () {
-                            _openWhatsApp(
-                              'Hello Noor Diesel Team,\n\nI’m interested in Baudouin Diesel Generator. Please share details and pricing.',
-                            );
-                          },
-                          icon: const Icon(Icons.shopping_cart_outlined),
-                          label: const Text('Buy Now'),
-                          style: _buttonStyle(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 70),
-
-            // 🔹 Generator 2
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: FadeInLeft(
-                    duration: const Duration(milliseconds: 800),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "CAT 50 kVA Silent Generator",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xFF1E3A8A),
-                          ),
-                        ),
-                        const SizedBox(height: 14),
-                        Text(
-                          "A compact, fuel-efficient power solution perfect for homes, offices, and industries. Ensures quiet operation and steady power supply in every environment.",
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            color: Colors.grey.shade800,
-                            height: 1.6,
-                          ),
-                        ),
-                        const SizedBox(height: 18),
-                        ElevatedButton.icon(
-                          onPressed: () {
-                            _openWhatsApp(
-                              'Hello Noor Diesel Team,\n\nI want to inquire about CAT 50 kVA Silent Generator.',
-                            );
-                          },
-                          icon: const Icon(Icons.shopping_cart_outlined),
-                          label: const Text('Buy Now'),
-                          style: _buttonStyle(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 30),
-                Expanded(
-                  flex: 5,
-                  child: FadeInRight(
-                    duration: const Duration(milliseconds: 800),
-                    child: _buildGeneratorImage(
-                      "assets/sells/CAT-DE50GC-50-kVA-Stand-by-Generator-Set-DPX-18205-Netherlands_3897_2790429851311.jpg",
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 70),
-
-            // 🔹 CTA Section
-            FadeInUp(
-              duration: const Duration(milliseconds: 900),
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 40,
-                  horizontal: 25,
-                ),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFFEFF3FF), Color(0xFFD9E2FF)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(18),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 15,
-                      offset: const Offset(0, 6),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "Looking for Reliable Power?",
-                      style: GoogleFonts.montserrat(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xFF1E3A8A),
-                      ),
-                    ),
-                    const SizedBox(height: 14),
-                    Text(
-                      "Get expert guidance on choosing the right generator for your business or home setup.",
-                      textAlign: TextAlign.center,
+                  const SizedBox(height: 8),
+                  GestureDetector(
+                    onTap: _makePhoneCall,
+                    child: Text(
+                      "📞 +92 333 35132538 (Tap to Call)",
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        color: Colors.grey.shade800,
-                        height: 1.6,
+                        color: Colors.white70,
+                        fontSize: isMobile ? 13 : 15,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
-                    const SizedBox(height: 25),
-                    ElevatedButton.icon(
-                      onPressed: () => _openWhatsApp(
-                        'Hello Noor Diesel Team,\n\nI need help selecting the best generator for my requirements.',
-                      ),
-                      icon: const Icon(Icons.chat_bubble_outline),
-                      label: const Text('Contact on WhatsApp'),
-                      style: _buttonStyle(),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
-            const SizedBox(height: 50),
-            Divider(thickness: 1.2, color: Colors.grey.shade300),
-            const SizedBox(height: 20),
+            // ✅ Main Section
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: isMobile ? 30 : 60,
+                horizontal: isMobile ? 20 : 80,
+              ),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF0A0F24), Color(0xFF1A2238)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Flex(
+                direction: isMobile ? Axis.vertical : Axis.horizontal,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Left side (Text)
+                  Expanded(
+                    flex: isMobile ? 0 : 1,
+                    child: FadeInLeft(
+                      duration: const Duration(milliseconds: 800),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "GENERATOR SALES",
+                            style: GoogleFonts.poppins(
+                              fontSize: isMobile ? 26 : 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.lightBlueAccent,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            "At Noor Diesel Engineering Company, we provide premium-quality diesel and gas generators "
+                            "from leading global brands. Our generator sets are designed for maximum durability, "
+                            "fuel efficiency, and consistent power performance for both industrial and residential needs.",
+                            style: GoogleFonts.poppins(
+                              fontSize: isMobile ? 14 : 16,
+                              color: Colors.white70,
+                              height: 1.7,
+                            ),
+                          ),
+                          const SizedBox(height: 25),
+                          _sectionTitle("OUR RANGE INCLUDES:"),
+                          _bulletList([
+                            "Diesel Generators (10 kVA – 1000 kVA)",
+                            "Gas and Hybrid Power Systems",
+                            "Silent Type Generators",
+                            "Automatic Transfer Switches (ATS)",
+                            "Generator Maintenance & Installation Services",
+                          ]),
+                          const SizedBox(height: 25),
+                          _sectionTitle("WHY CHOOSE US?"),
+                          _bulletList([
+                            "High-performance generators from trusted brands",
+                            "Competitive pricing and warranty support",
+                            "Expert installation and after-sales services",
+                            "24/7 technical and maintenance assistance",
+                          ]),
+                          const SizedBox(height: 25),
+                          _sectionTitle("CONTACT OUR SALES TEAM"),
+                          const SizedBox(height: 10),
+                          _contactLink(
+                            "📞 Call Us",
+                            Colors.lightBlueAccent,
+                            _makePhoneCall,
+                          ),
+                          _contactLink(
+                            "✉️ Send Email",
+                            Colors.orangeAccent,
+                            _sendEmail,
+                          ),
+                          _contactLink("💬 WhatsApp", Colors.greenAccent, () {
+                            _openWhatsApp(
+                              "Hello Noor Diesel Team,\n\nI want to inquire about your generator sales.",
+                            );
+                          }),
+                          const SizedBox(height: 10),
+                          Text(
+                            "🏢 Noor Diesel Engineering Company, Islamabad, Pakistan",
+                            style: GoogleFonts.poppins(
+                              fontSize: isMobile ? 14 : 15,
+                              color: Colors.white70,
+                              height: 1.6,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
 
-            // 🔹 Footer
-            Center(
+                  SizedBox(width: isMobile ? 0 : 50, height: isMobile ? 30 : 0),
+
+                  // Right side (Image)
+                  Expanded(
+                    flex: isMobile ? 0 : 1,
+                    child: FadeInRight(
+                      duration: const Duration(milliseconds: 900),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.network(
+                          "https://image.made-in-china.com/202f0j00yadBRoEKEOcU/Electrical-Generators-Perkin-150-kVA-Weatherproof-Diesel-Generator-1106A-70tag2-120kw-Power-Station.webp",
+                          height: isMobile ? 250 : 420,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // ✅ Footer
+            Container(
+              color: const Color(0xFF0A0F24),
+              padding: const EdgeInsets.symmetric(vertical: 25),
               child: Text(
                 "© 2025 Noor Diesel Engineering | All Rights Reserved",
-                style: GoogleFonts.poppins(
-                  color: Colors.grey.shade700,
-                  fontSize: 13.5,
-                ),
+                style: GoogleFonts.poppins(color: Colors.white54, fontSize: 13),
               ),
             ),
           ],
@@ -262,38 +224,51 @@ class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
     );
   }
 
-  Widget _buildGeneratorImage(String path) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.15),
-            blurRadius: 15,
-            offset: const Offset(0, 8),
-          ),
-        ],
+  // 🔹 Helper widgets
+  Widget _sectionTitle(String text) => Padding(
+    padding: const EdgeInsets.only(bottom: 6),
+    child: Text(
+      text,
+      style: GoogleFonts.poppins(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(18),
-        child: Image.asset(
-          path,
-          height: 320,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
+    ),
+  );
 
-  ButtonStyle _buttonStyle() {
-    return ElevatedButton.styleFrom(
-      backgroundColor: const Color(0xFF1E3A8A),
-      foregroundColor: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 4,
-      textStyle: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
-    );
-  }
+  Widget _bulletList(List<String> items) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: items
+        .map(
+          (e) => Padding(
+            padding: const EdgeInsets.only(bottom: 5),
+            child: Text(
+              "• $e",
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                color: Colors.white70,
+                height: 1.6,
+              ),
+            ),
+          ),
+        )
+        .toList(),
+  );
+
+  Widget _contactLink(String text, Color color, VoidCallback onTap) =>
+      GestureDetector(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 3),
+          child: Text(
+            text,
+            style: GoogleFonts.poppins(
+              fontSize: 15,
+              color: color,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ),
+      );
 }

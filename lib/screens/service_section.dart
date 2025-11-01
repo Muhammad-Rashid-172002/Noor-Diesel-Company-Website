@@ -19,36 +19,50 @@ class _ProductsSectionState extends State<ProductsSection> {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: [Color(0xFFF8FAFC), Color(0xFFE0F2FE)],
+          colors: [
+            Color(0xFF0B1120), // deep navy
+            Color(0xFF1E293B), // slate blue
+            Color(0xFF0F172A), // near black
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // 🏷️ Section Title
           Text(
             'Our Products',
             style: GoogleFonts.montserrat(
-              fontSize: 36,
-              fontWeight: FontWeight.w700,
-              color: const Color(0xFF1E3A8A),
-              letterSpacing: 1.1,
+              fontSize: 42,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              shadows: [
+                Shadow(
+                  color: Colors.blueAccent.withOpacity(0.5),
+                  blurRadius: 12,
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 12),
+
+          // 🌈 Title Underline
           Container(
-            width: 100,
+            width: 120,
             height: 4,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+                colors: [Color(0xFFFACC15), Color(0xFF38BDF8)],
               ),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 50),
+
+          // 🧱 Product Cards
           LayoutBuilder(
             builder: (context, constraints) {
               final isMobile = constraints.maxWidth < 700;
@@ -56,17 +70,17 @@ class _ProductsSectionState extends State<ProductsSection> {
 
               double cardWidth;
               if (isMobile) {
-                cardWidth = constraints.maxWidth / 1.2;
+                cardWidth = constraints.maxWidth / 1.1;
               } else if (isTablet) {
-                cardWidth = constraints.maxWidth / 2.3;
+                cardWidth = constraints.maxWidth / 2.2;
               } else {
-                cardWidth = constraints.maxWidth / 3.5;
+                cardWidth = constraints.maxWidth / 3.4;
               }
 
               return Wrap(
                 alignment: WrapAlignment.center,
-                spacing: 20,
-                runSpacing: 20,
+                spacing: 25,
+                runSpacing: 25,
                 children:
                     [
                           ProductCard(
@@ -129,7 +143,7 @@ class _ProductsSectionState extends State<ProductsSection> {
                         .map(
                           (card) => SizedBox(
                             width: cardWidth,
-                            height: cardWidth * 0.85, // nice visual ratio
+                            height: cardWidth * 0.85,
                             child: card,
                           ),
                         )
@@ -143,6 +157,7 @@ class _ProductsSectionState extends State<ProductsSection> {
   }
 }
 
+// 💎 PRODUCT CARD WIDGET
 class ProductCard extends StatefulWidget {
   final String title;
   final String imageUrl;
@@ -170,43 +185,47 @@ class _ProductCardState extends State<ProductCard> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 350),
-          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+          transform: Matrix4.translationValues(0, _hover ? -8 : 0, 0),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: _hover
+                  ? const Color(0xFF00B4DB).withOpacity(0.6)
+                  : Colors.white10,
+              width: 1.5,
+            ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(_hover ? 0.25 : 0.1),
-                blurRadius: _hover ? 22 : 10,
+                color: _hover
+                    ? const Color(0xFF00B4DB).withOpacity(0.6)
+                    : Colors.black.withOpacity(0.3),
+                blurRadius: _hover ? 25 : 10,
                 offset: const Offset(0, 8),
               ),
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(20),
             child: Stack(
               fit: StackFit.expand,
               children: [
-                // 🖼 Background Image
+                // 🖼 Image
                 AnimatedScale(
-                  duration: const Duration(milliseconds: 350),
+                  duration: const Duration(milliseconds: 300),
                   scale: _hover ? 1.05 : 1.0,
-                  curve: Curves.easeInOut,
                   child: Image.network(widget.imageUrl, fit: BoxFit.cover),
                 ),
 
-                // 🌈 Light gradient overlay (whole card)
+                // 🌈 Overlay
                 AnimatedOpacity(
-                  duration: const Duration(milliseconds: 350),
-                  opacity: _hover ? 0.5 : 0.0, // 👈 semi-transparent
-                  curve: Curves.easeInOut,
+                  duration: const Duration(milliseconds: 300),
+                  opacity: _hover ? 0.6 : 0.25,
                   child: Container(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          Color(0xFFF59E0B), // amber
-                          Color(0xFFEF4444), // red
-                        ],
+                        colors: [Color(0xFF00B4DB), Color(0xFF0083B0)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -214,17 +233,20 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
 
-                // 📝 Bottom text area
+                // 📝 Bottom Label
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    padding: const EdgeInsets.all(16),
-                    color: Colors.black.withOpacity(0.45),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 14,
+                    ),
+                    color: Colors.black.withOpacity(0.55),
                     child: Text(
                       widget.title,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                         letterSpacing: 0.5,

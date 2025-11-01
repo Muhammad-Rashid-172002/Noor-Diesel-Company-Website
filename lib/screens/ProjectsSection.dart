@@ -37,7 +37,11 @@ class ProjectsSection extends StatelessWidget {
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: [Color(0xFFF8FAFC), Color(0xFFE0F2FE)],
+          colors: [
+            Color(0xFF0B1120), // deep navy
+            Color(0xFF1E293B), // slate blue
+            Color(0xFF0F172A), // near black
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -49,19 +53,19 @@ class ProjectsSection extends StatelessWidget {
           Text(
             'Our Projects',
             style: GoogleFonts.montserrat(
-              fontSize: 34,
+              fontSize: 36,
               fontWeight: FontWeight.bold,
-              letterSpacing: 1.5,
-              color: const Color(0xFF0F172A),
+              letterSpacing: 1.2,
+              color: Colors.white,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 12),
           Container(
-            width: 100,
+            width: 120,
             height: 4,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+                colors: [Color(0xFFFACC15), Color(0xFF38BDF8)],
               ),
               borderRadius: BorderRadius.circular(2),
             ),
@@ -76,7 +80,7 @@ class ProjectsSection extends StatelessWidget {
                 runSpacing: 24,
                 children: projects
                     .map(
-                      (project) => _ModernProjectCard(
+                      (project) => _DarkProjectCard(
                         title: project['title']!,
                         type: project['type']!,
                         imageUrl: project['image']!,
@@ -93,13 +97,13 @@ class ProjectsSection extends StatelessWidget {
   }
 }
 
-class _ModernProjectCard extends StatefulWidget {
+class _DarkProjectCard extends StatefulWidget {
   final String title;
   final String type;
   final String imageUrl;
   final String description;
 
-  const _ModernProjectCard({
+  const _DarkProjectCard({
     required this.title,
     required this.type,
     required this.imageUrl,
@@ -107,23 +111,24 @@ class _ModernProjectCard extends StatefulWidget {
   });
 
   @override
-  State<_ModernProjectCard> createState() => _ModernProjectCardState();
+  State<_DarkProjectCard> createState() => _DarkProjectCardState();
 }
 
-class _ModernProjectCardState extends State<_ModernProjectCard> {
+class _DarkProjectCardState extends State<_DarkProjectCard> {
   bool _isHovered = false;
 
   void _showDetailsDialog() {
     showDialog(
       context: context,
       builder: (context) => Dialog(
+        backgroundColor: const Color(0xFF1E293B),
         insetPadding: const EdgeInsets.all(20),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Container(
-          width: 500,
+          width: 520,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
+            color: const Color(0xFF0F172A),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -150,17 +155,17 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
                     Text(
                       widget.type.toUpperCase(),
                       style: GoogleFonts.montserrat(
-                        color: Colors.blueAccent,
+                        color: const Color(0xFF38BDF8),
                         fontSize: 14,
-                        letterSpacing: 1.5,
+                        letterSpacing: 1.3,
                       ),
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 8),
                     Text(
                       widget.title,
                       style: GoogleFonts.poppins(
-                        color: Colors.black87,
-                        fontSize: 20,
+                        color: Colors.white,
+                        fontSize: 22,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -168,18 +173,18 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
                     Text(
                       widget.description,
                       style: GoogleFonts.openSans(
-                        color: Colors.grey.shade700,
+                        color: Colors.white70,
                         fontSize: 15,
                         height: 1.5,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 24),
                     Align(
                       alignment: Alignment.centerRight,
                       child: ElevatedButton(
                         onPressed: () => Navigator.pop(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: const Color(0xFF38BDF8),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 10,
@@ -211,26 +216,26 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
         width: 340,
         height: 320,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.9),
+          color: const Color(0xFF1E293B),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
               color: _isHovered
-                  ? Colors.blueAccent.withOpacity(0.25)
-                  : Colors.black12,
-              blurRadius: _isHovered ? 25 : 8,
-              offset: const Offset(0, 8),
+                  ? const Color(0xFF38BDF8).withOpacity(0.35)
+                  : Colors.black54,
+              blurRadius: _isHovered ? 25 : 12,
+              offset: const Offset(0, 10),
             ),
           ],
           border: Border.all(
             color: _isHovered
-                ? Colors.blueAccent.withOpacity(0.3)
+                ? const Color(0xFF38BDF8).withOpacity(0.4)
                 : Colors.transparent,
-            width: 2,
+            width: 1.5,
           ),
         ),
         transform: _isHovered
-            ? (Matrix4.identity()..scale(1.05))
+            ? (Matrix4.identity()..scale(1.04))
             : Matrix4.identity(),
         clipBehavior: Clip.hardEdge,
         child: Stack(
@@ -245,7 +250,7 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
             if (_isHovered)
               AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.black.withOpacity(0.45),
               ),
             Positioned(
               bottom: 0,
@@ -254,9 +259,9 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.black.withOpacity(0.7), Colors.transparent],
+                    colors: [Colors.black87, Colors.transparent],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
@@ -267,7 +272,7 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
                     Text(
                       widget.type.toUpperCase(),
                       style: GoogleFonts.montserrat(
-                        color: Colors.white70,
+                        color: const Color(0xFF38BDF8),
                         fontSize: 14,
                         letterSpacing: 1.5,
                       ),
@@ -288,8 +293,8 @@ class _ModernProjectCardState extends State<_ModernProjectCard> {
                       child: ElevatedButton(
                         onPressed: _showDetailsDialog,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
-                          foregroundColor: Colors.white,
+                          backgroundColor: const Color(0xFFFACC15),
+                          foregroundColor: Colors.black87,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 10,
