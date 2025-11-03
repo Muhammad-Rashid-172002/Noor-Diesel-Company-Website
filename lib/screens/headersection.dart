@@ -156,6 +156,7 @@ class _HeaderSectionState extends State<HeaderSection> {
       ),
     );
   }
+  // 🔹 Navigation Item Widget
 
   Widget _navItem(String label, String section) {
     return MouseRegion(

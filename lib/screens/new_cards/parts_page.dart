@@ -208,6 +208,7 @@ class PartsPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
+        // Description Text
         FadeInUp(
           duration: const Duration(milliseconds: 800),
           child: Text(

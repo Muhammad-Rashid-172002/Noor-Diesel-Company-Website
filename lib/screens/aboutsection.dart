@@ -100,6 +100,7 @@ class _AboutSectionState extends State<AboutSection> {
       ),
     );
   }
+  // About Image Widget
 
   Widget _aboutImage() {
     return Container(
@@ -271,7 +272,7 @@ class _AboutSectionState extends State<AboutSection> {
                 color: const Color(0xFFFACC15).withOpacity(0.4),
                 blurRadius: 14,
                 spreadRadius: 2,
-              ),
+              ),  
           ],
         ),
         child: Column(

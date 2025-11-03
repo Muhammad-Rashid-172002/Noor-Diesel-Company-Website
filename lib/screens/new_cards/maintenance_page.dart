@@ -7,6 +7,7 @@ class MaintenancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Sample gallery data
     final galleryData = [
       {
         'image':

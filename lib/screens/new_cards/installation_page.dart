@@ -383,7 +383,7 @@ class InstallationPage extends StatelessWidget {
     );
   }
 }
-
+// Feature Card Widget
 class _FeatureCard extends StatelessWidget {
   final IconData icon;
   final String title;

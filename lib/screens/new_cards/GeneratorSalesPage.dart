@@ -255,7 +255,7 @@ class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
         )
         .toList(),
   );
-
+// Contact Link Widget  
   Widget _contactLink(String text, Color color, VoidCallback onTap) =>
       GestureDetector(
         onTap: onTap,

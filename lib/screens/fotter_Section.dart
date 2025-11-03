@@ -101,6 +101,7 @@ class FooterSection extends StatelessWidget {
     );
   }
 }
+// Footer Icon Widget
 
 class _FooterIcon extends StatefulWidget {
   final IconData icon;

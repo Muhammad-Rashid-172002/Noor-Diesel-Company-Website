@@ -6,6 +6,7 @@ class ProjectsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Sample project data
     final projects = [
       {
         "title": "Installation - Blue Area, Islamabad",
@@ -96,7 +97,7 @@ class ProjectsSection extends StatelessWidget {
     );
   }
 }
-
+// project card widget
 class _DarkProjectCard extends StatefulWidget {
   final String title;
   final String type;
