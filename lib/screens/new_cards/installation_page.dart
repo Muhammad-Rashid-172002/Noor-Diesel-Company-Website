@@ -20,6 +20,7 @@ class InstallationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Sample installation projects data
     final installations = [
       {
         'image':

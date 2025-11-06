@@ -41,6 +41,7 @@ class RentalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Sample generator data
     final generatorList = [
       {
         'image':

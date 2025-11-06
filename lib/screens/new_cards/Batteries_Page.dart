@@ -183,6 +183,7 @@ class _BatteriesPageState extends State<BatteriesPage> {
           ),
         ),
         const SizedBox(height: 20),
+        // Description Text
         Text(
           "At Noor Diesel Engineering Company, we supply premium-quality generator batteries designed for "
           "long-lasting performance and dependable power delivery. Whether for industrial, commercial, or home "
@@ -203,6 +204,7 @@ class _BatteriesPageState extends State<BatteriesPage> {
           ),
         ),
         const SizedBox(height: 10),
+        // Bullet Point List
         Text(
           "• Lead Acid and Dry Batteries\n"
           "• Maintenance-Free Batteries\n"
@@ -225,6 +227,7 @@ class _BatteriesPageState extends State<BatteriesPage> {
           ),
         ),
         const SizedBox(height: 10),
+        // Bullet Point List
         Text(
           "• 100% Genuine and Tested Batteries\n"
           "• Competitive Pricing and Fast Delivery\n"

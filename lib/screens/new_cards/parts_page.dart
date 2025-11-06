@@ -237,6 +237,7 @@ class PartsPage extends StatelessWidget {
         const SizedBox(height: 10),
         FadeInUp(
           duration: const Duration(milliseconds: 800),
+          // Bullet Point List
           child: Text(
             "• Diesel Engine Filters (Air, Fuel, Oil)\n"
             "• Fuel Injectors & Pumps\n"

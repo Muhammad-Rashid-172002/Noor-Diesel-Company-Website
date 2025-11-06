@@ -117,7 +117,7 @@ class _FooterIcon extends StatefulWidget {
   @override
   State<_FooterIcon> createState() => _FooterIconState();
 }
-
+// Footer Icon State
 class _FooterIconState extends State<_FooterIcon> {
   bool _hover = false;
 

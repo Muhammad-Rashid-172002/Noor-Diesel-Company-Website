@@ -86,6 +86,7 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: SingleChildScrollView(
               controller: _scrollController,
+              // Sections with assigned GlobalKeys
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [

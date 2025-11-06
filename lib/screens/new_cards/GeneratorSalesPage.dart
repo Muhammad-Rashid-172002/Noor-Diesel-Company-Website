@@ -128,6 +128,7 @@ class _GeneratorSalesPageState extends State<GeneratorSalesPage> {
                             ),
                           ),
                           const SizedBox(height: 20),
+                          // Description Text
                           Text(
                             "At Noor Diesel Engineering Company, we provide premium-quality diesel and gas generators "
                             "from leading global brands. Our generator sets are designed for maximum durability, "

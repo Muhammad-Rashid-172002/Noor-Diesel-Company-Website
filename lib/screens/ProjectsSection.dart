@@ -33,7 +33,7 @@ class ProjectsSection extends StatelessWidget {
             "Delivered and installed brand-new diesel generators for a top-tier office setup in Karachi, focusing on efficiency, reliability, and long-term performance.",
       },
     ];
-
+// main container
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(

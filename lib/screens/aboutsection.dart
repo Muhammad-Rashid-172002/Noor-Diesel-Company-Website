@@ -130,6 +130,7 @@ class _AboutSectionState extends State<AboutSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Description Text
         Text(
           'We specialize in the sales, rental, and maintenance of power and industrial equipment across Pakistan — delivering reliability, efficiency, and trust in every project.',
           style: GoogleFonts.poppins(

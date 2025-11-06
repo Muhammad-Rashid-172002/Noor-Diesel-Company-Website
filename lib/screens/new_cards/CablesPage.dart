@@ -10,6 +10,13 @@ class Cablespage extends StatefulWidget {
 class _CablespageState extends State<Cablespage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Cables Page'),
+      ),
+      body: const Center(
+        child: Text('This is the Cables Page'),
+      ),
+    );
   }
 }
