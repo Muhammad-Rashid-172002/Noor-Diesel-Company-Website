@@ -11,6 +11,7 @@ class _CablespageState extends State<Cablespage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Basic AppBar and Body for Cables Page
       appBar: AppBar(
         title: const Text('Cables Page'),
       ),

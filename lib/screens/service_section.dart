@@ -76,7 +76,7 @@ class _ProductsSectionState extends State<ProductsSection> {
               } else {
                 cardWidth = constraints.maxWidth / 3.4;
               }
-
+              // 🧩 Responsive Wrap of ProductCards
               return Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 25,

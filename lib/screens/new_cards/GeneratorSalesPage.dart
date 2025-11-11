@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:animate_do/animate_do.dart';
+import 'package:google_fonts/google_fonts.dart'; // For custom fonts
+import 'package:url_launcher/url_launcher.dart'; // For launching URLs
+import 'package:animate_do/animate_do.dart';// For animations
 
 class GeneratorSalesPage extends StatefulWidget {
   const GeneratorSalesPage({super.key});

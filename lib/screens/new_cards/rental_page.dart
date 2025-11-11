@@ -77,7 +77,7 @@ class RentalPage extends StatelessWidget {
         ],
       },
     ];
-
+// 🔹 Main Build Method
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(

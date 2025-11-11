@@ -81,6 +81,7 @@ class MaintenancePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // 📝 Title Text
                   Text(
                     'Reliable Generator Maintenance & Repairs',
                     textAlign: TextAlign.center,

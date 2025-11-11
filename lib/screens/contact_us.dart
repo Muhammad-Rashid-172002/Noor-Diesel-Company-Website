@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';// Flutter Material Package
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';// For FontAwesome icons
+import 'package:url_launcher/url_launcher.dart';// For launching URLs
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});

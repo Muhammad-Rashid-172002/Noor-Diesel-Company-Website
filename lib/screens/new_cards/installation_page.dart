@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:animate_do/animate_do.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';// For FontAwesome icons
+import 'package:google_fonts/google_fonts.dart';// For custom fonts
+import 'package:url_launcher/url_launcher.dart';// For launching URLs
+import 'package:animate_do/animate_do.dart';// For animations
 
 class InstallationPage extends StatelessWidget {
   const InstallationPage({super.key});
-
+// 🟢 WhatsApp Contact Function
   Future<void> _contactOnWhatsApp(String message) async {
     const phone = '+923335132538';
     final url = Uri.parse(
