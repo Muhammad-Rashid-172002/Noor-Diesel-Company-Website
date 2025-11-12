@@ -4,17 +4,18 @@ import 'package:url_launcher/url_launcher.dart';// For launching URLs
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
-
+// 🟢 Contact Info
   final String phoneNumber = '+923335132538';
   final String email = 'noordiesel@gmail.com';
   final String whatsappNumber = '+923335132538';
   final String address = 'Blue Area, Islamabad';
 
+// 🟢 Phone Contact Function
   Future<void> _launchPhone() async {
     final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
     if (await canLaunchUrl(phoneUri)) await launchUrl(phoneUri);
   }
-
+// 🟢 Email Contact Function
   Future<void> _launchEmail() async {
     final Uri emailUri = Uri(
       scheme: 'mailto',
@@ -25,7 +26,7 @@ class ContactSection extends StatelessWidget {
     );
     if (await canLaunchUrl(emailUri)) await launchUrl(emailUri);
   }
-
+// 🟢 WhatsApp Contact Function
   Future<void> _launchWhatsApp() async {
     final Uri whatsappUri = Uri.parse(
       'https://wa.me/$whatsappNumber?text=Hello%20Noor%20Diesel%20Engineering%20Company,%0AI%20am%20interested%20in%20your%20products%20and%20would%20like%20more%20information.%0AThank%20you.',

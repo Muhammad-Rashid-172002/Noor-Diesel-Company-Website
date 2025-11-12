@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:uncle_website/screens/new_cards/GeneratorSalesPage.dart';
+import 'package:google_fonts/google_fonts.dart'; // for google fonts 
+import 'package:uncle_website/screens/new_cards/GeneratorSalesPage.dart';// for genrator 
 import 'package:uncle_website/screens/new_cards/batteries_page.dart';
 import 'package:uncle_website/screens/new_cards/installation_page.dart';
 import 'package:uncle_website/screens/new_cards/parts_page.dart';

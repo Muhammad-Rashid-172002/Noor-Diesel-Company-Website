@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';// Flutter Material Package
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';// For FontAwesome icons
+import 'package:google_fonts/google_fonts.dart';// For Google Fonts
+import 'package:url_launcher/url_launcher.dart';// For launching URLs
 
 class HeaderSection extends StatefulWidget {
   final Function(String section)? onNavItemTap;
@@ -19,7 +19,7 @@ class _HeaderSectionState extends State<HeaderSection> {
   final Color darkBlue = const Color(0xFF0A3D62); // deep diesel blue
   final Color mediumBlue = const Color(0xFF1E3A8A); // accent navy
   final Color lightBlue = const Color(0xFF3ABEF9); // bright highlight
-
+//... 🔵 Contact Action Functions
   Future<void> _openWhatsApp() async {
     const phone = '+923335132538';
     final url = Uri.parse(
@@ -27,12 +27,12 @@ class _HeaderSectionState extends State<HeaderSection> {
     );
     await launchUrl(url, mode: LaunchMode.externalApplication);
   }
-
+// 🔵 Make Call Function
   Future<void> _makeCall() async {
     final Uri phoneUri = Uri(scheme: 'tel', path: '+923335132538');
     await launchUrl(phoneUri);
   }
-
+// 🔵 Send Email Function
   Future<void> _sendEmail() async {
     final Uri emailUri = Uri(
       scheme: 'mailto',

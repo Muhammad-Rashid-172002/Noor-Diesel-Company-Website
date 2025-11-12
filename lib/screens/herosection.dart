@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';// Flutter Material Package
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';// For FontAwesome icons
+import 'package:google_fonts/google_fonts.dart';// For Google Fonts
+import 'package:url_launcher/url_launcher.dart';// For launching URLs
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -11,7 +11,7 @@ class HeroSection extends StatelessWidget {
   final String whatsappNumber = '+923335132538';
   final String emailAddress =
       'noordieselcompany@gmail.com'; // your company email
-
+// whatsapp 
   Future<void> _launchWhatsApp() async {
     final Uri whatsappUrl = Uri.parse(
       "https://wa.me/$whatsappNumber?text=Hello%20Noor%20Diesel%20Engineering%20Company",
@@ -20,13 +20,14 @@ class HeroSection extends StatelessWidget {
       await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
     }
   }
-
+// call 
   Future<void> _launchCall() async {
     final Uri phoneUrl = Uri.parse("tel:$phoneNumber");
     if (await canLaunchUrl(phoneUrl)) {
       await launchUrl(phoneUrl);
     }
   }
+// email
 
   Future<void> _launchEmail() async {
     final Uri emailUrl = Uri(

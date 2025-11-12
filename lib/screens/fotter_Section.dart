@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';// Flutter Material Package
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';// For FontAwesome icons
+import 'package:url_launcher/url_launcher.dart';// For launching URLs
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
-
+// 🟢 Launch WhatsApp Function
   Future<void> _launchWhatsApp() async {
     final Uri whatsappUri = Uri.parse(
       'https://wa.me/+923335132538?text=Hello%20Noor%20Diesel%20Engineering%20Company,%20I%20would%20like%20to%20inquire%20about%20your%20services.',
     );
     await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
   }
-
+// 🟢 Launch Email Function
   Future<void> _launchEmail() async {
     final Uri emailUri = Uri(
       scheme: 'mailto',
@@ -20,7 +20,7 @@ class FooterSection extends StatelessWidget {
     );
     await launchUrl(emailUri);
   }
-
+// 🟢 Launch Phone Function
   Future<void> _launchPhone() async {
     final Uri phoneUri = Uri(scheme: 'tel', path: '+923335132538');
     await launchUrl(phoneUri);
