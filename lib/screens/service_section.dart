@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart'; // for google fonts 
 import 'package:uncle_website/screens/new_cards/GeneratorSalesPage.dart';// for genrator 
-import 'package:uncle_website/screens/new_cards/batteries_page.dart';
-import 'package:uncle_website/screens/new_cards/installation_page.dart';
-import 'package:uncle_website/screens/new_cards/parts_page.dart';
-import 'package:uncle_website/screens/new_cards/rental_page.dart';
+import 'package:uncle_website/screens/new_cards/batteries_page.dart';// for batteries
+import 'package:uncle_website/screens/new_cards/installation_page.dart';// for installation
+import 'package:uncle_website/screens/new_cards/parts_page.dart';// for parts
+import 'package:uncle_website/screens/new_cards/rental_page.dart';// for rental
 
 class ProductsSection extends StatefulWidget {
   const ProductsSection({super.key});
