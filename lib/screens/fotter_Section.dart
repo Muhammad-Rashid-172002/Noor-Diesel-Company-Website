@@ -50,7 +50,7 @@ class FooterSection extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           const Text(
-            'Providing reliable generator sales, rental, and installation services across Pakistan.',
+            'Providing reliable generator sales, rental, and installation services across Pakistan.',// description text
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white70, fontSize: 14, height: 1.5),
           ),

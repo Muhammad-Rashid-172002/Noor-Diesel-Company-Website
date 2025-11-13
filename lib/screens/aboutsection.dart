@@ -17,10 +17,10 @@ class _AboutSectionState extends State<AboutSection> {
     {"icon": Icons.engineering, "title": "Mechanical & Electrical Machinery"},
     {
       "icon": Icons.precision_manufacturing,
-      "title": "Industry Machinery & Parts",
+      "title": "Industry Machinery & Parts",// industry machinery
     },
-    {"icon": Icons.book, "title": "Office Stationery & Books"},
-    {"icon": Icons.electrical_services, "title": "Electrical Panels & Cabling"},
+    {"icon": Icons.book, "title": "Office Stationery & Books"},// office stationery
+    {"icon": Icons.electrical_services, "title": "Electrical Panels & Cabling"},//  
     {"icon": Icons.electric_bolt, "title": "AC/DC Motors & Control Panels"},
     {"icon": Icons.security, "title": "Security Cameras & Internet Systems"},
     {"icon": Icons.light, "title": "Industrial & Commercial Lighting"},

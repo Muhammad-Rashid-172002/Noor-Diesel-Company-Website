@@ -14,7 +14,7 @@ class HeroSection extends StatelessWidget {
 // whatsapp 
   Future<void> _launchWhatsApp() async {
     final Uri whatsappUrl = Uri.parse(
-      "https://wa.me/$whatsappNumber?text=Hello%20Noor%20Diesel%20Engineering%20Company",
+      "https://wa.me/$whatsappNumber?text=Hello%20Noor%20Diesel%20Engineering%20Company",// prefilled message
     );
     if (await canLaunchUrl(whatsappUrl)) {
       await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
@@ -50,7 +50,7 @@ class HeroSection extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu-pPcjoDF9lBxyNyYOrZY37zQvMXJ1zwI9Q&s',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu-pPcjoDF9lBxyNyYOrZY37zQvMXJ1zwI9Q&s',// background image url
           ),
           fit: BoxFit.cover,
         ),
@@ -75,7 +75,7 @@ class HeroSection extends StatelessWidget {
               children: [
                 // 🔹 Title
                 Text(
-                  'NOOR DIESEL ENGINEERING COMPANY PAKISTAN',
+                  'NOOR DIESEL ENGINEERING COMPANY PAKISTAN',// title text  
                   textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(
                     fontSize: isMobile ? 28 : 48,
@@ -88,7 +88,7 @@ class HeroSection extends StatelessWidget {
 
                 // 🔹 Subtitle
                 Text(
-                  'Powering Your World with Reliable Diesel Generators ⚙️',
+                  'Powering Your World with Reliable Diesel Generators ⚙️',// subtitle text
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                     fontSize: isMobile ? 16 : 22,

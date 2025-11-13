@@ -9,12 +9,12 @@ class ProjectsSection extends StatelessWidget {
     // Sample project data
     final projects = [
       {
-        "title": "Installation - Blue Area, Islamabad",
-        "type": "Installation",
+        "title": "Installation - Blue Area, Islamabad",// project title
+        "type": "Installation",// project type
         "image":
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxUpJ7ZROKtfjp7JPeqv33_OBakRCMvRGIaA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxUpJ7ZROKtfjp7JPeqv33_OBakRCMvRGIaA&s",// project image url
         "description":
-            "We installed a high-capacity generator setup in Blue Area, Islamabad, ensuring uninterrupted power supply for commercial offices. Our expert team managed the entire process from delivery to testing.",
+            "We installed a high-capacity generator setup in Blue Area, Islamabad, ensuring uninterrupted power supply for commercial offices. Our expert team managed the entire process from delivery to testing.",// project description
       },
       {
         "title": "Rental - Event Hall, Lahore",

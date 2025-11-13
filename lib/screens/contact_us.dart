@@ -21,7 +21,7 @@ class ContactSection extends StatelessWidget {
       scheme: 'mailto',
       path: email,
       query: Uri.encodeFull(
-        'subject=Inquiry&body=Hello Noor Diesel Engineering Company,\nI am interested in your products/services and would like more information.\n\nThank you.',
+        'subject=Inquiry&body=Hello Noor Diesel Engineering Company,\nI am interested in your products/services and would like more information.\n\nThank you.',// prefilled subject and body
       ),
     );
     if (await canLaunchUrl(emailUri)) await launchUrl(emailUri);
@@ -29,7 +29,7 @@ class ContactSection extends StatelessWidget {
 // 🟢 WhatsApp Contact Function
   Future<void> _launchWhatsApp() async {
     final Uri whatsappUri = Uri.parse(
-      'https://wa.me/$whatsappNumber?text=Hello%20Noor%20Diesel%20Engineering%20Company,%0AI%20am%20interested%20in%20your%20products%20and%20would%20like%20more%20information.%0AThank%20you.',
+      'https://wa.me/$whatsappNumber?text=Hello%20Noor%20Diesel%20Engineering%20Company,%0AI%20am%20interested%20in%20your%20products%20and%20would%20like%20more%20information.%0AThank%20you.',// prefilled message
     );
     if (await canLaunchUrl(whatsappUri)) {
       await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
